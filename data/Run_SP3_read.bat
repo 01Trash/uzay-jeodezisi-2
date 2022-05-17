@@ -109,5 +109,8 @@ rename R12.xyz  R12.txt
 PRNfromSP3  R24  2022  04  15
 rename R24.xyz  R24.txt
 
+PRNfromSP3  R04  2022  04  15
+rename R04.xyz  R04.txt
+
 PAUSE
 
