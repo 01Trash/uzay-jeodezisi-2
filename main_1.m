@@ -57,7 +57,6 @@ for j = 1:97;
 
 endfor
 
-
 ##plot(gra_t, gra_x)
 ##hold on
 ##plot(gra_t, gra_y)
@@ -67,11 +66,31 @@ endfor
 ##set(gca, 'xtick', 0:2:24);
 ##grid on
 
+## ŞİMDİ SALLAMA ZAMANI!!!
+% sallama x değerleri
+a_x = -10000;
+b_x = 0;
+c_x = 23000;
+d_x = pi/3;
+f_x = pi/6;
+% sallama y değerleri
+a_y = -6000;
+b_y = 0;
+c_y = 12000;
+d_y = pi/4;
+f_y = pi/6;
+% sallama z değerleri
+a_z = -10000;
+b_z = 0;
+c_z = 22000;
+d_z = pi/3;
+f_z = pi/6;
+
 
 k = 1;
 for k = 1:97;
 
-    % sabit x değerleri
+    % sallama x değerleri
     a_x = -10000;
     b_x = 0;
     c_x = 23000;
