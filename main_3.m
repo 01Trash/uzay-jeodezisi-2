@@ -68,52 +68,60 @@ endfor
 
 ## ŞİMDİ SALLAMA ZAMANI!!!
 % sallama x değerleri
-a_x = 44;
-b_x = 0;
-c_x = 20000;
-d_x = pi/3;
-f_x = -pi/6;
+##a_x = 44;
+##b_x = 0;
+##c_x = 20000;
+##d_x = pi/3;
+##f_x = -pi/6;
 % sallama y değerleri
-##a_y = -6000;
+##a_y = 0;
 ##b_y = 0;
 ##c_y = 12000;
 ##d_y = pi/4;
 ##f_y = pi/6;
 % sallama z değerleri
-##a_z = -10000;
-##b_z = 0;
-##c_z = 22000;
-##d_z = pi/3;
-##f_z = pi/6;
+a_z = 10;
+b_z = 0;
+c_z = 22000;
+d_z = pi/3;
+f_z = pi/6;
 
-a_x_son = a_x;
-b_x_son = b_x;
-c_x_son = c_x;
-d_x_son = d_x;
-f_x_son = f_x;
+##i: 219
+##a_y_sapka: -21.187 [km]
+##b_y_sapka:  -0.008 [km/h]
+##c_y_sapka: 12628.308 [km]
+##d_y_sapka: 177.218 [°]
+##f_y_sapka: 328.037 [°/h]
+##m0:   5.728 [km]
+
+a_z_son = a_z;
+b_z_son = b_z;
+c_z_son = c_z;
+d_z_son = d_z;
+f_z_son = f_z;
 
 i = 0;
 
-a_x_sapka = 1;
-while (abs(a_x_sapka - a_x) > 1.0E-9)
+a_z_sapka = 1;
+while (abs(a_z_sapka - a_z) > 1.0E-9)
 
-    a_x = a_x_son;
-    b_x = b_x_son;
-    c_x = c_x_son;
-    d_x = d_x_son;
-    f_x = f_x_son;
+    a_z = a_z_son;
+    b_z = b_z_son;
+    c_z = c_z_son;
+    d_z = d_z_son;
+    f_z = f_z_son;
     k = 1;
     for k = 1:97;
         % l_x hesapla
-        X = M(k,5);
+        Z = M(k,7);
         Delta_j = M(k,2);
-        l_x(k,1) = X - (a_x + b_x*Delta_j + c_x*sin(d_x+f_x*Delta_j));
+        l_z(k,1) = Z - (a_z + b_z*Delta_j + c_z*sin(d_z+f_z*Delta_j));
         % A matrisi
         A(k,1) = 1;
         A(k,2) = M(k,2);
-        A(k,3) = sin(d_x+f_x*Delta_j);
-        A(k,4) = c_x*cos(d_x+f_x*Delta_j);
-        A(k,5) = c_x*cos(d_x+f_x*Delta_j)*Delta_j;
+        A(k,3) = sin(d_z+f_z*Delta_j);
+        A(k,4) = c_z*cos(d_z+f_z*Delta_j);
+        A(k,5) = c_z*cos(d_z+f_z*Delta_j)*Delta_j;
 
         k = k + 1;
     endfor
@@ -123,28 +131,28 @@ while (abs(a_x_sapka - a_x) > 1.0E-9)
     % A_transpose * A
     Q_delta = inv(A_transpose * A);
     % A_T_l
-    A_T_l = A_transpose * l_x;
+    A_T_l = A_transpose * l_z;
     % Delta_sapka
     Delta_sapka = Q_delta * A_T_l;
     % a_x_sapka
-    a_x_sapka = a_x + Delta_sapka(1,1);
-    b_x_sapka = b_x + Delta_sapka(2,1);
-    c_x_sapka = c_x + Delta_sapka(3,1);
-    d_x_sapka = d_x + Delta_sapka(4,1);
-    f_x_sapka = f_x + Delta_sapka(5,1);
+    a_z_sapka = a_z + Delta_sapka(1,1);
+    b_z_sapka = b_z + Delta_sapka(2,1);
+    c_z_sapka = c_z + Delta_sapka(3,1);
+    d_z_sapka = d_z + Delta_sapka(4,1);
+    f_z_sapka = f_z + Delta_sapka(5,1);
 
-    a_x_son = a_x_sapka;
-    b_x_son = b_x_sapka;
-    c_x_son = c_x_sapka;
-    d_x_son = d_x_sapka;
-    f_x_son = f_x_sapka;
+    a_z_son = a_z_sapka;
+    b_z_son = b_z_sapka;
+    c_z_son = c_z_sapka;
+    d_z_son = d_z_sapka;
+    f_z_son = f_z_sapka;
 
 
-    fprintf("a_x_sapka - a_x: %7.20f\n", a_x_sapka - a_x);
-    fprintf("b_x_sapka - b_x: %7.20f\n", b_x_sapka - b_x);
-    fprintf("c_x_sapka - c_x: %7.20f\n", c_x_sapka - c_x);
-    fprintf("d_x_sapka - d_x: %7.20f\n", d_x_sapka - d_x);
-    fprintf("f_x_sapka - f_x: %7.20f\n\n", f_x_sapka - f_x);
+    fprintf("a_z_sapka - a_z: %7.20f\n", a_z_sapka - a_z);
+    fprintf("b_z_sapka - b_z: %7.20f\n", b_z_sapka - b_z);
+    fprintf("c_z_sapka - c_z: %7.20f\n", c_z_sapka - c_z);
+    fprintf("d_z_sapka - d_z: %7.20f\n", d_z_sapka - d_z);
+    fprintf("f_z_sapka - f_z: %7.20f\n\n", f_z_sapka - f_z);
 
 
 ##    fprintf("Delta_sapka: %7.20f\n", Delta_sapka(1,1));
@@ -158,16 +166,16 @@ endwhile
 
 fprintf("i: %d\n", i);
 
-fprintf("a_x_sapka: %7.3f [km]\n", a_x_sapka);
-fprintf("b_x_sapka: %7.3f [km/h]\n", b_x_sapka);
-fprintf("c_x_sapka: %7.3f [km]\n", c_x_sapka);
-fprintf("d_x_sapka: %7.13f [radyan]\n", d_x_sapka);
-fprintf("f_x_sapka: %7.13f [radyan/h]\n", f_x_sapka);
-fprintf("d_x_sapka: %7.13f [°]\n", d_x_sapka*180/pi);
-fprintf("f_x_sapka: %7.13f [°/h]\n\n", f_x_sapka*180/pi);
+fprintf("a_z_sapka: %7.3f [km]\n", a_z_sapka);
+fprintf("b_z_sapka: %7.3f [km/h]\n", b_z_sapka);
+fprintf("c_z_sapka: %7.3f [km]\n", c_z_sapka);
+fprintf("d_z_sapka: %7.13f [radyan]\n", d_z_sapka);
+fprintf("f_z_sapka: %7.13f [radyan/h]\n", f_z_sapka);
+fprintf("d_z_sapka: %7.13f [°]\n", d_z_sapka*180/pi);
+fprintf("f_z_sapka: %7.13f [°/h]\n\n", f_z_sapka*180/pi);
 
 ##m0 değer hesabı
-v = A * Delta_sapka - l_x;
+v = A * Delta_sapka - l_z;
 v_transpose = transpose(v);
 m0 = sqrt((v_transpose * v)/92);
 fprintf("m0: %7.3f [km]\n", m0);
