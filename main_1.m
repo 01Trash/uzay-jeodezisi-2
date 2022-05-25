@@ -68,11 +68,11 @@ endfor
 
 ## ŞİMDİ SALLAMA ZAMANI!!!
 % sallama x değerleri
-a_x = 44;
+a_x = 0;
 b_x = 0;
 c_x = 20000;
-d_x = pi/3;
-f_x = -pi/6;
+d_x = 5*pi/3;
+f_x = pi/6;
 % sallama y değerleri
 ##a_y = -6000;
 ##b_y = 0;

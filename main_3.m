@@ -83,7 +83,7 @@ endfor
 a_z = 10;
 b_z = 0;
 c_z = 22000;
-d_z = pi/3;
+d_z = -pi/3;
 f_z = pi/6;
 
 ##i: 219
